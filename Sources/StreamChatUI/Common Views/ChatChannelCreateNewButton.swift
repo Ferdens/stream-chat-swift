@@ -17,7 +17,7 @@ open class _ChatChannelCreateNewButton<ExtraData: ExtraDataTypes>: Button, UICon
     
     override open func setUpLayout() {
         super.setUpLayout()
-        widthAnchor.pin(equalToConstant: 60).isActive = true
-        heightAnchor.pin(equalToConstant: 60).isActive = true
+        widthAnchor.pin(equalToConstant: 44).isActive = true
+        heightAnchor.pin(equalToConstant: 44).isActive = true
     }
 }
