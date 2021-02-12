@@ -68,6 +68,7 @@ func AssertSnapshot(
 func AssertSnapshot(
     _ view: UIView,
     variants: [SnapshotVariant] = .allCases,
+    size: CGSize? = nil,
     suffix: String? = nil,
     record: Bool = false,
     line: UInt = #line,
@@ -77,7 +78,7 @@ func AssertSnapshot(
     variants.forEach { variant in
         assertSnapshot(
             matching: view,
-            as: .image(traits: variant.traits),
+            as: size != nil ? .image(size: size!, traits: variant.traits) : .image(traits: variant.traits),
             named: variant.rawValue + (suffix.map { "." + $0 } ?? ""),
             record: record,
             file: file,
