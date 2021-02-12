@@ -5,6 +5,12 @@
 import SnapshotTesting
 import XCTest
 
+/// Whether or not to record all new references.
+var isRecording: Bool {
+    get { SnapshotTesting.isRecording }
+    set { SnapshotTesting.isRecording = newValue }
+}
+
 /// The default view controller size. Simulates an iPhone in portrait mode.
 let defaultScreenSize = CGSize(width: 360, height: 700)
 
