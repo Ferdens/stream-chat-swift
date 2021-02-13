@@ -43,7 +43,7 @@ open class _ChatMessageComposerMentionCellView<ExtraData: ExtraDataTypes>: View,
     // MARK: - Appearance
 
     override public func defaultAppearance() {
-        backgroundColor = .clear
+        backgroundColor = uiConfig.colorPalette.popoverBackground
         usernameLabel.font = uiConfig.font.headlineBold
 
         usernameTagLabel.font = uiConfig.font.subheadlineBold
