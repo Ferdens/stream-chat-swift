@@ -38,7 +38,7 @@ open class _ChatMessageComposerMentionCellView<ExtraData: ExtraDataTypes>: View,
     /// ImageView which is located at the right part of the cell, showing @ symbol by default.
     open private(set) lazy var suggestionTypeImageView: UIImageView = UIImageView().withoutAutoresizingMaskConstraints
     /// StackView which holds username and userTag labels in vertical axis by default.
-    private lazy var textStackView: UIStackView = UIStackView().withoutAutoresizingMaskConstraints
+    open private(set) lazy var textStackView: UIStackView = UIStackView().withoutAutoresizingMaskConstraints
 
     // MARK: - Appearance
 
@@ -50,6 +50,8 @@ open class _ChatMessageComposerMentionCellView<ExtraData: ExtraDataTypes>: View,
         usernameTagLabel.textColor = uiConfig.colorPalette.subtitleText
 
         usernameLabel.textColor = uiConfig.colorPalette.text
+
+        suggestionTypeImageView.image = uiConfig.images.messageComposerCommandsMention
     }
 
     override open func setUpLayout() {
@@ -63,8 +65,12 @@ open class _ChatMessageComposerMentionCellView<ExtraData: ExtraDataTypes>: View,
     }
 
     override open func updateContent() {
-        usernameTagLabel.text = content?.subtitle
         usernameLabel.text = content?.title
+        if let subtitle = content?.subtitle {
+            usernameTagLabel.text = "@" + subtitle
+        } else {
+            usernameTagLabel.text = ""
+        }
 
         // If user has photo, show it. Otherwise use first placeholder.
         if let url = content?.imageURL {
