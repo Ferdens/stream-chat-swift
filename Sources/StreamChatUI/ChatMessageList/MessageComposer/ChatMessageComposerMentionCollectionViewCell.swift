@@ -72,14 +72,7 @@ open class _ChatMessageComposerMentionCellView<ExtraData: ExtraDataTypes>: View,
             usernameTagLabel.text = ""
         }
 
-        // If user has photo, show it. Otherwise use first placeholder.
-        if let url = content?.imageURL {
-            avatarView.imageView.loadImage(from: url)
-        } else {
-            avatarView.imageView.image = uiConfig.images.userAvatarPlaceholder1
-        }
-
-        suggestionTypeImageView.image = uiConfig.images.messageComposerCommandsMention
+        avatarView.content = (content?.imageURL, content?.isUserOnline)
     }
 
     // MARK: Private

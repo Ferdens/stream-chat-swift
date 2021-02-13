@@ -207,6 +207,8 @@ var streamChatSourcesExcluded: [String] { [
 ] }
 
 var streamChatUIFilesExcluded: [String] { [
+    "ChatMessageList/MessageComposer/ChatMessageComposerMentionCellView_Tests.swift",
+    "ChatMessageList/MessageComposer/__Snapshots__/ChatMessageComposerMentionCellView_Tests/test_emptyAppearance.small.png",
     "Utils/UIConfigProvider_Tests.swift",
     "ChatChannelList/ChatChannelAvatarView_Tests.swift",
     "ChatChannelList/ChatChannelListVC_Tests.swift",
