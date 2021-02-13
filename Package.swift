@@ -208,6 +208,8 @@ var streamChatSourcesExcluded: [String] { [
 
 var streamChatUIFilesExcluded: [String] { [
     "ChatMessageList/MessageComposer/ChatMessageComposerMentionCellView_Tests.swift",
+    "ChatMessageList/MessageComposer/__Snapshots__/ChatMessageComposerMentionCellView_Tests/test_defaultAppearance_withUserOnline.small.png",
+    "ChatMessageList/MessageComposer/__Snapshots__/ChatMessageComposerMentionCellView_Tests/test_defaultAppearance_withUserOffline.small.png",
     "ChatMessageList/MessageComposer/__Snapshots__/ChatMessageComposerMentionCellView_Tests/test_emptyAppearance.small.png",
     "Utils/UIConfigProvider_Tests.swift",
     "ChatChannelList/ChatChannelAvatarView_Tests.swift",

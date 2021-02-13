@@ -8,33 +8,36 @@ import StreamChatTestTools
 import XCTest
 
 class ChatMessageComposerMentionCellView_Tests: XCTestCase {
+    /// Default reference width for the cell on current tested device
+    private static var defaultCellWidth = UIScreen.main.bounds.width - 16
+
     override func setUp() {
         super.setUp()
     }
 
     func test_emptyAppearance() {
         let view = ChatMessageComposerMentionCellView().withoutAutoresizingMaskConstraints
-        view.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        view.content = ("YOLO", "yolo", TestImages.vader.url, true)
+        view.widthAnchor.constraint(equalToConstant: Self.defaultCellWidth).isActive = true
 
         AssertSnapshot(view, variants: [.small], record: true)
     }
 
-//    func test_defaultAppearance_withDirectMessageChannel() {
-//        let view = ChatChannelAvatarView().withoutAutoresizingMaskConstraints
-//        view.addSizeConstraints()
-//        view.content = (channel, currentUserId)
-//        AssertSnapshot(view, variants: [.small], suffix: "with online indicator")
-//
-//        // Reset the channel such that both members are offline
-//        channel = ChatChannel.mockDMChannel(members: [
-//            .mock(id: currentUserId, imageURL: TestImages.vader.url),
-//            .mock(id: .unique, imageURL: TestImages.yoda.url)
-//        ])
-//
-//        view.content = (channel, currentUserId)
-//        AssertSnapshot(view, variants: [.small])
-//    }
+    func test_defaultAppearance_withUserOnline() {
+        let view = ChatMessageComposerMentionCellView().withoutAutoresizingMaskConstraints
+        view.widthAnchor.constraint(equalToConstant: Self.defaultCellWidth).isActive = true
+        view.content = ("Mr Vader", "darkforce37", TestImages.vader.url, true)
+
+        AssertSnapshot(view, variants: [.small], record: true)
+    }
+
+    func test_defaultAppearance_withUserOffline() {
+        let view = ChatMessageComposerMentionCellView().withoutAutoresizingMaskConstraints
+        view.widthAnchor.constraint(equalToConstant: Self.defaultCellWidth).isActive = true
+        view.content = ("Mr Vader", "darkforce37", TestImages.vader.url, false)
+
+        AssertSnapshot(view, variants: [.small], record: true)
+    }
+
 //
 //    func test_defaultAppearance_withNonDMChannel() {
 //        // TODO: https://stream-io.atlassian.net/browse/CIS-652
@@ -104,14 +107,4 @@ class ChatMessageComposerMentionCellView_Tests: XCTestCase {
 //        view.content = (channel, currentUserId)
 //        AssertSnapshot(view, variants: [.small])
 //    }
-}
-
-private extension ChatChannelAvatarView {
-    /// `ChatChannelAvatarView` infers its size from the image but we want the size to be the same for all snapshots.
-    func addSizeConstraints() {
-        NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 50),
-            widthAnchor.constraint(equalToConstant: 50)
-        ])
-    }
 }
