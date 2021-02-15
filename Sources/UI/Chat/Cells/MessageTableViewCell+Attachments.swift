@@ -39,7 +39,7 @@ extension MessageTableViewCell {
         }
         
         let preview: AttachmentPreview
-        let isFileAttachment = attachment.type == .file
+        let isFileAttachment = attachment.type == .file || attachment.type == .video
         
         if isFileAttachment {
             preview = FileAttachmentPreview(frame: .zero)
